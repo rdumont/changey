@@ -16,7 +16,9 @@
       "url": "https://github.com/rdumont/changey/master/LICENSE.txt"
     }
   ],
-  "main": "./bin/changey.js",
+  "bin": {
+    "changey": "./bin/cli.js"
+  },
   "dependencies": {
     "colors": "^0.6.2",
     "js-yaml": "^3.0.2",

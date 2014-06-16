@@ -1,6 +1,6 @@
 require 'colors'
 GitHubClient = require '../lib/GitHubClient'
-ey = require '../lib/ey'
+changey = require '../lib/changey'
 
 args = require('yargs')
   .usage 'Usage: changey <repo> <version> [options]'
@@ -13,7 +13,7 @@ args = require('yargs')
   .describe 'dry-run', "Simulate the creation of a release instead of actually creating it"
   .argv
 
-configuration = ey.readConfiguration args.config
+configuration = changey.readConfiguration args.config
 
 options =
   repository: args._[0]
@@ -50,10 +50,10 @@ client.getLastRelease()
   client.getIssuesClosedSince release.created_at
 
 .then (issues) ->
-  issues = ey.filter issues, options.include, options.exclude
+  issues = changey.filter issues, options.include, options.exclude
   console.log ". found #{issues.length} issues"
 
-  body = ey.createReleaseBody issues, options.groups
+  body = changey.createReleaseBody issues, options.groups
 
   console.log ". creating GitHub release for v#{options.version}"
   client.createRelease "v#{options.version}", options.version, body, options.dryRun
