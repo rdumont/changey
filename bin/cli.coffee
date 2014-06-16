@@ -34,7 +34,7 @@ options =
   exclude: configuration.exclude
   include: configuration.include
 
-console.log "Build changelog for v#{options.version} of #{options.repository}"
+console.log "Build changelog for #{options.version} of #{options.repository}"
 
 client = new GitHubClient(options)
 
@@ -55,8 +55,8 @@ client.getLastRelease()
 
   body = changey.createReleaseBody issues, options.groups
 
-  console.log ". creating GitHub release for v#{options.version}"
-  client.createRelease "v#{options.version}", options.version, body, options.dryRun
+  console.log ". creating GitHub release for #{options.version}"
+  client.createRelease options.version, body, options.dryRun
 
 .then (release) ->
   if !options.dryRun

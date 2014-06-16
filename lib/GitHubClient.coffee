@@ -17,7 +17,7 @@ class GitHubClient
   isSuccessStatusCode = (statusCode) ->
     statusCode >= 200 and statusCode < 300
 
-  get = (path, qs) ->
+  _get: (path, qs) ->
     deferred = Q.defer()
     options =
       url: apiEndpoint + path
@@ -32,7 +32,7 @@ class GitHubClient
 
     deferred.promise
 
-  post = (path, json) ->
+  _post: (path, json) ->
     deferred = Q.defer()
     options =
       url: apiEndpoint + path
@@ -49,12 +49,12 @@ class GitHubClient
     deferred.promise
 
   getLastRelease: =>
-    get "repos/#{@repository}/releases"
+    @_get "repos/#{@repository}/releases"
     .then (releases) =>
       _.find releases, prerelease: @prerelease
 
   getIssuesClosedSince: (isoDate) =>
-    get "repos/#{@repository}/issues",
+    @_get "repos/#{@repository}/issues",
       state: 'closed'
       since: isoDate
       per_page: 100
@@ -65,14 +65,14 @@ class GitHubClient
         not issue.pull_request and Date.parse(issue.closed_at) > date
       issues.reverse()
 
-  createRelease: (tagName, name, body, dryRun) =>
+  createRelease: (tagName, body, dryRun) =>
     release = 
       tag_name: tagName
-      name: name
+      name: if tagName[0] is 'v' then tagName.substr(1) else tagName
       body: body
       prerelease: @prerelease
 
     return Q(release) if dryRun
-    post "repos/#{@repository}/releasesNOOOO", release
+    @_post "repos/#{@repository}/releases", release
 
 module.exports = GitHubClient
