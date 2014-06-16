@@ -37,7 +37,7 @@
     "coffee-script": "^1.7.1"
   },
   "scripts": {
-    "test": "mocha test/*.coffee --compilers coffee:coffee-script/register --reporter spec",
+    "test": "sh scripts/test.sh",
     "prepublish": "sh scripts/build.sh"
   }
 }
