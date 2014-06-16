@@ -1,4 +1,4 @@
-# Changely
+# Changely [![Build Status](https://travis-ci.org/rdumont/changey.svg?branch=master)](https://travis-ci.org/rdumont/changey)
 
 Creates GitHub releases with an automatic change log.
 
