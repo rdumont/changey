@@ -1,3 +1,4 @@
 node_modules/
 bin/*.js
 lib/*.js
+npm-debug.log

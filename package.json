@@ -29,6 +29,6 @@
     "coffee-script": "^1.7.1"
   },
   "scripts": {
-    "prepublish": "scripts/build"
+    "prepublish": "sh scripts/build"
   }
 }
