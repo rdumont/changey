@@ -1,6 +1,6 @@
 {
   "name": "changey",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Rodrigo Dumont <rlsdumont@gmail.com>",
   "description": "Creates GitHub releases with an automatic change log.",
   "tags": [
