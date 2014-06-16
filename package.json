@@ -29,6 +29,6 @@
     "coffee-script": "^1.7.1"
   },
   "scripts": {
-    "prepublish": "rm -f lib/*.js && rm -f bin/*.js && node_modules/.bin/coffee -b -c lib/ bin/"
+    "prepublish": "scripts/build"
   }
 }
