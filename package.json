@@ -1,9 +1,15 @@
 {
   "name": "changey",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Rodrigo Dumont <rlsdumont@gmail.com>",
   "description": "Creates GitHub releases with an automatic change log.",
-  "tags": [ "github", "releases", "changelog", "issues", "version" ],
+  "tags": [
+    "github",
+    "releases",
+    "changelog",
+    "issues",
+    "version"
+  ],
   "homepage": "https://github.com/rdumont/changey",
   "issues": "https://github.com/rdumont/changey/issues",
   "repository": {
