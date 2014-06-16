@@ -4,7 +4,8 @@ path = require 'path'
 yaml = require 'js-yaml'
 
 hasLabel = (issue, names) ->
-  _.some issue.labels, (label) ->
+  return true if names.length == 0
+  _.some issue.labels or [], (label) ->
     _.some names, (name) -> name.toLowerCase() is label.name.toLowerCase()
 
 writeIssues = (title, issues) ->
@@ -21,7 +22,7 @@ createReleaseBody = (issues, groups) ->
   body.join('')
 
 meetsConditions = (issue, conditions) ->
-  return true if conditions.users and _.some conditions.users, (user) ->
+  conditions.users and _.some conditions.users, (user) ->
     user is issue.user.login
 
 filter = (issues, include, exclude) ->
@@ -39,6 +40,9 @@ readConfiguration = (filePath) ->
   {}
 
 module.exports =
+  _hasLabel: hasLabel
+  _writeIssues: writeIssues
+  _meetsConditions: meetsConditions
   readConfiguration: readConfiguration
   filter: filter
   createReleaseBody: createReleaseBody
