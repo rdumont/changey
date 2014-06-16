@@ -1,0 +1,9 @@
+language: node_js
+
+deploy:
+  provider: npm
+  email: rlsdumont@gmail.com
+  api_key:
+    secure: "WV6qCv5jZDsqEMxlya5iilQHDg7CR9FTe75Do0qbwkn4mUG10L9VsNloNNYljdWzGCI0AUXmzIG0LE2ENYPGIImy7yxJ/ujjbENfldQC9BuKYOAQiWLw7p54TfKsfl9yLzPKNZjIM0KCcK1nNEU1lo4A2Mx03YKuoDPfnu/tzvc="
+  on:
+    tags: true
