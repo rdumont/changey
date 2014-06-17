@@ -1,4 +1,6 @@
-# Changely [![Build Status](https://travis-ci.org/rdumont/changey.svg?branch=master)](https://travis-ci.org/rdumont/changey)
+# Changey [![Build Status](https://travis-ci.org/rdumont/changey.svg?branch=master)](https://travis-ci.org/rdumont/changey)
+
+[![](https://nodei.co/npm/changey.png)](https://nodei.co/npm/changey/)
 
 Creates GitHub releases with an automatic change log.
 
