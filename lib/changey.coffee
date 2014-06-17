@@ -1,12 +1,11 @@
 fs = require 'fs'
-_ = require 'lodash'
 path = require 'path'
 yaml = require 'js-yaml'
 
 hasLabel = (issue, names) ->
   return true if names.length == 0
-  _.some issue.labels or [], (label) ->
-    _.some names, (name) -> name.toLowerCase() is label.name.toLowerCase()
+  (issue.labels or []).some (label) ->
+    names.some (name) -> name.toLowerCase() is label.name.toLowerCase()
 
 writeIssues = (title, issues) ->
   return "" if issues.length == 0
@@ -22,7 +21,7 @@ createReleaseBody = (issues, groups) ->
   body.join('')
 
 meetsConditions = (issue, conditions) ->
-  conditions.users and _.some conditions.users, (user) ->
+  conditions.users and conditions.users.some (user) ->
     user is issue.user.login
 
 filter = (issues, include, exclude) ->

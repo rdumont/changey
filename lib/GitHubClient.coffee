@@ -61,7 +61,7 @@ class GitHubClient
       sort: 'updated'
     .then (issues) ->
       date = Date.parse isoDate
-      issues = _.filter issues, (issue) ->
+      issues = issues.filter (issue) ->
         not issue.pull_request and Date.parse(issue.closed_at) > date
       issues.reverse()
 
