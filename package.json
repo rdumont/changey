@@ -25,6 +25,7 @@
   "bin": {
     "changey": "./bin/cli.js"
   },
+  "preferGlobal": true,
   "dependencies": {
     "colors": "^0.6.2",
     "js-yaml": "^3.0.2",
