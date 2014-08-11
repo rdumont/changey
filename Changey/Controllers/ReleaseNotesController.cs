@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Changey.Model;
 using Changey.Services;
+using Newtonsoft.Json;
 
 namespace Changey.Controllers
 {
@@ -30,7 +29,8 @@ namespace Changey.Controllers
                 payload.CreateCategories(), payload.TitleTemplate, payload.BodyTemplate);
 
             var release = await client.SaveReleaseNotesAsync(releaseNotes, preRelease, dryRun);
-            return Json(new ReleaseResponse(release));
+            return Json(new ReleaseResponse(release),
+                new JsonSerializerSettings {ContractResolver = new JavaScriptContractResolver()});
         }
 
         private string GetAuthorizationToken()
